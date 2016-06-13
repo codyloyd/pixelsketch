@@ -4,10 +4,15 @@ $(document).ready ( function() {
 	$("#drawing").click(function(){
 		gridSize = $("#number").val();		
 		makeGrid("drawing");
-
-		$(".drawing").hover(function(){
-			$(this).css("background-color","#721330");
-		});
+		$("#wrapper").on('mousedown mouseup', function mouseState(e){
+		    if (e.type == "mousedown") {
+				$(".drawing").mouseenter(function(){
+						$(this).css("background-color","#721330");
+				});
+			} else {
+					$(".drawing").unbind('mouseenter mouseleave');
+			}
+		})
 	});
 
 	$("#trailing").click(function(){
